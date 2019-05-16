@@ -88,4 +88,14 @@ contact.{{ contact.name }}.always_send {{ contact.level }}
 # the services must be defined in the Nagios server as well.
 #contact.nagios.command /usr/bin/send_nsca nagios.host.comm -c /etc/nsca.conf
 
+{% if munin_tls %}
+# TLS setup: http://guide.munin-monitoring.org/en/latest/advanced/tls-setup.html
+tls paranoid
+tls_verify_certificate yes
+tls_private_key {{ munin_tls_private_key }}
+tls_certificate {{ munin_tls_certificate }}
+tls_ca_certificate {{ munin_tls_ca_certificate }}
+tls_verify_depth {{ munin_tls_verify_depth }}
+{% endif %}
+
 # Hosts are defined separately, in {{ munin_includedir }}

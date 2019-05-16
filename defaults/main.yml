@@ -2,6 +2,7 @@
 munin_packages:
   - python-passlib
   - munin
+  - libnet-ssleay-perl
 
 munin_conf_d_directory: /etc/munin/conf.d
 
@@ -44,3 +45,10 @@ munin_alerts: []
 #    subject: "Munin-notification for ${var:group} :: ${var:host}",
 #    level: "warning critical"
 #   }
+
+# TLS configuration.
+munin_tls: False
+munin_tls_private_key: /etc/ssl/private/ssl-cert-snakeoil.key
+munin_tls_certificate: /etc/ssl/certs/ssl-cert-snakeoil.pem
+munin_tls_ca_certificate: /etc/ssl/certs/ssl-cert-snakeoil.pem
+munin_tls_verify_depth: 5
